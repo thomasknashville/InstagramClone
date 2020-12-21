@@ -4,6 +4,7 @@ import { fetchPics, API_BASE_URL, uploadPic } from "./api";
 import Button from "react-bootstrap/Button";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Card, Modal } from "react-bootstrap";
+import Navigation from "./components/navigation/Naviagtion";
 
 function App() {
   const [photos, setPhotos] = useState([]);
@@ -53,6 +54,8 @@ function App() {
 
     setShow(!show);
   };
+
+  // needs work, image not dsiplaying in Modal component
   const handleSrc = (event) => {
     setModalSrc(event.currentTarget.src);
   };
@@ -64,6 +67,7 @@ function App() {
 
   return (
     <div className="App">
+      <Navigation />
       <Modal show={show}>
         <Modal.Header>Photo name</Modal.Header>
         <Modal.Body>
