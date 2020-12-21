@@ -94,6 +94,22 @@ app.post("/pics", uploader.single("photo"), (req, res) => {
   });
 });
 
+//post/2mb
+app.post("/photos", uploader.single("photo"), (res, req) => {
+  res.json({
+    photo: req.file.path,
+  });
+});
+
+req.params.size 
+
+app.use(uploadPics ({
+  limits:
+{
+  filesize: 2 *1024 * 1024 *1024
+}
+})):
+
 app.listen(4000, () => {
   console.log("Express server is now running on port 4000");
 });
