@@ -3,7 +3,8 @@ import React from "react";
 const Home = () => {
   return (
     <div>
-      <h3>Hello World!</h3>
+      <h3>Welcome to Kenziegram!</h3>
+      <h5>Select photos to upload photos and see your image gallery</h5>
     </div>
   );
 };

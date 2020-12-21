@@ -80,7 +80,7 @@ export const Photos = () => {
       {uploadStatus && <p>{uploadStatus}</p>}
       <form onSubmit={submitForm}>
         <input type="file" name="photo" onChange={onSelectFile} />
-        <Button type="submit">Submit</Button>
+        <Button type="submit">Upload</Button>
       </form>
       {photos.map((pic) => (
         <Button onClick={() => handleImgClick()}>
