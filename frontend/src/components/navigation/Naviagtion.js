@@ -2,21 +2,24 @@ import React from "react";
 import { NavLink, Route, Switch } from "react-router-dom";
 import Home from "../home/Home";
 import Photos from "../photos/Photos";
+import Navbar from "react-bootstrap/Navbar";
+import Nav from "react-bootstrap/Nav";
+
 const Navigation = () => {
   return (
-    <div id="nav-links">
-      <div id="nav-items">
-        <div>
-          <NavLink to="/" activeClassName="selected" exact={true}>
+    <div>
+      <Navbar fixed="top" variant="dark" className="bg-blue">
+        <Navbar.Brand className="brand">Kenziegram</Navbar.Brand>
+        <Nav className="ml-auto">
+          <NavLink to="/" activeClassName="selected" exact={true} className="mr-3 nav-link">
             Home
           </NavLink>
-        </div>
-        <div>
-          <NavLink to="/photos" activeClassName="selected">
+          <NavLink to="/photos" activeClassName="selected" className="nav-link">
             Photos
           </NavLink>
-        </div>
-      </div>
+        </Nav>
+      </Navbar>
+
       <Switch>
         <Route exact path="/">
           <Home />
@@ -25,6 +28,19 @@ const Navigation = () => {
           <Photos />
         </Route>
       </Switch>
+
+      {/* <div id="nav-items"> */}
+      {/* <li>
+          <NavLink to="/" activeClassName="selected" exact={true}>
+            Home
+          </NavLink>
+        </div>
+        <div>
+          <NavLink to="/photos" activeClassName="selected">
+            Photos
+          </NavLink>
+        </li> */}
+      {/* </div> */}
     </div>
   );
 };

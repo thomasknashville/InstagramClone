@@ -87,12 +87,33 @@ app.get("/pics/:filename", async (req, res) => {
 });
 
 // post/create file
-app.post("/pics", uploader.single("photo"), (req, res) => {
+app.post("/photos", uploader.single("photo"), (req, res) => {
   console.log({ req });
   res.json({
     photo: req.file.path,
   });
 });
+
+//post/2mb
+// let filesizeLimit = 2 * 1024
+
+// app.post("/photos", uploader.single("photo"), (res, req) => {
+//   if (req.params.size <= filesizeLimit)
+//   Photos.push("photo")
+//   res.json({
+//     res.send("Photo upload success!"),
+//   });
+// });
+//set postman to form-data, key = photo, drop down change to file, select the file, send
+
+// req.params.size
+
+// app.use(uploadPics ({
+//   limits:
+// {
+//   filesize: 2 *1024 * 1024 *1024
+// }
+// })):
 
 app.listen(4000, () => {
   console.log("Express server is now running on port 4000");
