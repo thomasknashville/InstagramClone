@@ -28,19 +28,6 @@ const Navigation = () => {
           <Photos />
         </Route>
       </Switch>
-
-      {/* <div id="nav-items"> */}
-      {/* <li>
-          <NavLink to="/" activeClassName="selected" exact={true}>
-            Home
-          </NavLink>
-        </div>
-        <div>
-          <NavLink to="/photos" activeClassName="selected">
-            Photos
-          </NavLink>
-        </li> */}
-      {/* </div> */}
     </div>
   );
 };

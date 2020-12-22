@@ -4,7 +4,6 @@ import Button from "react-bootstrap/Button";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Card, Modal } from "react-bootstrap";
 import Container from "react-bootstrap/Container";
-//import Navigation from "../navigation/Naviagtion";
 
 export const Photos = () => {
   const [photos, setPhotos] = useState([]);
@@ -52,8 +51,6 @@ export const Photos = () => {
   };
 
   const handleModal = (event) => {
-    // console.log(modalSrc);
-
     setShow(!show);
   };
 
@@ -66,18 +63,6 @@ export const Photos = () => {
   };
 
   return (
-    // <Modal show={show}>
-    //   <Modal.Header>Photo name</Modal.Header>
-    //   <Modal.Body>
-    //     <Card>
-    //       <Card.Img src={`${modalSrc}`} />
-    //       Photo size
-    //     </Card>
-    //   </Modal.Body>
-    //   <Modal.Footer>
-    //     <Button onClick={() => handleModal()}>Close Modal</Button>
-    //   </Modal.Footer>
-    // </Modal>
     <Container className="photoGallery fx-margin">
       {fectchStatusError && <p>{fectchStatusError}</p>}
       {uploadStatus && <p>{uploadStatus}</p>}
@@ -101,12 +86,9 @@ export const Photos = () => {
           </Modal>
         ))}
         {photos.map((pic) => (
-          // <Button onClick={() => handleImgClick()} >
           <Card src={`${API_BASE_URL}${pic}`}>
             <Card.Img src={`${API_BASE_URL}${pic}`} name={pic} onClick={(e) => handleImgClick(e)} />
-            {/* <img key={pic} src={`${API_BASE_URL}${pic}`} alt={pic} width={"150px"} height={"150px"} /> */}
           </Card>
-          // </Button>
         ))}
       </div>
     </Container>
