@@ -57,10 +57,10 @@ export const Photos = () => {
     setShow(!show);
   };
 
-  const handleImgClick = (e) => {
+  const handleImgClick = async (e) => {
     setModalSrc(e.target.src);
     setModalName(e.target.name.substring(9));
-    const picSize = `${fetchPicSize(e)}`;
+    const picSize = await fetchPicSize(e);
     setModalFileSize(picSize);
     handleModal();
   };
