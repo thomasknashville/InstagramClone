@@ -10,11 +10,8 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
-.card {
-  width: 300px;
-  height: 320px;
-}
-/* 
-.photoGallery {
+.gallery {
   display: flex;
-} */
+  flex-wrap: wrap;
+  width: 900px;
+}

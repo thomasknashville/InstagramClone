@@ -40,7 +40,12 @@
 
 .card {
   width: 200px;
-  height: 320px;
+  height: 200px;
+}
+
+.card-img {
+  width: 200px;
+  height: 200px;
 }
 
 .nav-link {

@@ -66,47 +66,49 @@ export const Photos = () => {
   };
 
   return (
+    // <Modal show={show}>
+    //   <Modal.Header>Photo name</Modal.Header>
+    //   <Modal.Body>
+    //     <Card>
+    //       <Card.Img src={`${modalSrc}`} />
+    //       Photo size
+    //     </Card>
+    //   </Modal.Body>
+    //   <Modal.Footer>
+    //     <Button onClick={() => handleModal()}>Close Modal</Button>
+    //   </Modal.Footer>
+    // </Modal>
     <Container className="photoGallery fx-margin">
-      <Modal show={show}>
-        <Modal.Header>Photo name</Modal.Header>
-        <Modal.Body>
-          <Card>
-            <Card.Img src={`${modalSrc}`} />
-            Photo size
-          </Card>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button onClick={() => handleModal()}>Close Modal</Button>
-        </Modal.Footer>
-      </Modal>
       {fectchStatusError && <p>{fectchStatusError}</p>}
       {uploadStatus && <p>{uploadStatus}</p>}
       <form onSubmit={submitForm}>
         <input type="file" name="photo" onChange={onSelectFile} />
         <Button type="submit">Upload</Button>
       </form>
-      {photos.map((pic) => (
-        <Modal show={show}>
-          <Modal.Header>{modalName}</Modal.Header>
-          <Modal.Body>
-            <Card>
-              <Card.Img src={modalSrc} />
-            </Card>
-          </Modal.Body>
-          <Modal.Footer>
-            <p>{modalFileSize}</p>
-            <Button onClick={() => handleModal()}>Close Modal</Button>
-          </Modal.Footer>
-        </Modal>
-      ))}
-      {photos.map((pic) => (
-        // <Button onClick={() => handleImgClick()} >
-        <Card src={`${API_BASE_URL}${pic}`}>
-          <Card.Img src={`${API_BASE_URL}${pic}`} name={pic} onClick={(e) => handleImgClick(e)} />
-          {/* <img key={pic} src={`${API_BASE_URL}${pic}`} alt={pic} width={"150px"} height={"150px"} /> */}
-        </Card>
-        // </Button>
-      ))}
+      <div className="gallery">
+        {photos.map((pic) => (
+          <Modal show={show}>
+            <Modal.Header>{modalName}</Modal.Header>
+            <Modal.Body>
+              <Card>
+                <Card.Img src={modalSrc} />
+              </Card>
+            </Modal.Body>
+            <Modal.Footer>
+              <p>{modalFileSize}</p>
+              <Button onClick={() => handleModal()}>Close</Button>
+            </Modal.Footer>
+          </Modal>
+        ))}
+        {photos.map((pic) => (
+          // <Button onClick={() => handleImgClick()} >
+          <Card src={`${API_BASE_URL}${pic}`}>
+            <Card.Img src={`${API_BASE_URL}${pic}`} name={pic} onClick={(e) => handleImgClick(e)} />
+            {/* <img key={pic} src={`${API_BASE_URL}${pic}`} alt={pic} width={"150px"} height={"150px"} /> */}
+          </Card>
+          // </Button>
+        ))}
+      </div>
     </Container>
   );
 };
