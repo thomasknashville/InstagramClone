@@ -18,6 +18,15 @@ export const fetchPics = async () => {
   return data;
 };
 
+// fetch pic size
+export const fetchPicSize = async (e) => {
+  const { data } = await axiosInstance.get(`/pics/${e.target.name.substring(9)}`);
+  console.log(data.size);
+  const fileBytes = JSON.stringify(data.size / 1000) + "kb";
+  console.log(fileBytes);
+  return fileBytes;
+};
+
 // fetch pics hard mode
 // export const fetchPics = async () => {
 //   const { data } = await axiosInstance.get("/pics-hard-mode", {
@@ -34,3 +43,9 @@ export const uploadPic = async (data) => {
   formData.append("photo", data);
   await axiosInstance.post("/pics", formData);
 };
+
+// export const fetchSize = async () => {
+//   const { data } = await axiosInstance.get(`/pics/${}`);
+//   console.log(data);
+//   return data;
+// };

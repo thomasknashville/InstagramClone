@@ -32,7 +32,9 @@ const storage = multer.diskStorage({
   },
 });
 
-export const uploader = multer({ storage });
+const maxSize = 2 * 1000 * 1000;
+
+export const uploader = multer({ storage, limits: { fileSize: maxSize } });
 
 export const getUploadedFiles = async () => {
   return await fs.readdir(UPLOAD_DIRECTORY);

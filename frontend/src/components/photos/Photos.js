@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { fetchPics, API_BASE_URL, uploadPic } from "../../api";
+import { fetchPics, API_BASE_URL, uploadPic, fetchPicSize } from "../../api";
 import Button from "react-bootstrap/Button";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Card, Modal } from "react-bootstrap";
@@ -12,6 +12,9 @@ export const Photos = () => {
   const [fectchStatusError, setFetchStatusError] = useState(null);
   const [show, setShow] = useState(false);
   const [modalSrc, setModalSrc] = useState("no path!");
+  const [modalName, setModalName] = useState("");
+  const [modalFileSize, setModalFileSize] = useState("0");
+
   useEffect(() => {
     async function getPhotos() {
       setPhotos(await fetchPics());
@@ -48,34 +51,21 @@ export const Photos = () => {
   };
 
   const handleModal = (event) => {
-    console.log(modalSrc);
+    // console.log(modalSrc);
 
     setShow(!show);
   };
 
-  // needs work, image not dsiplaying in Modal component
-  const handleSrc = (event) => {
-    setModalSrc(event.currentTarget.src);
+  const handleImgClick = (e) => {
+    setModalSrc(e.target.src);
+    setModalName(e.target.name.substring(9));
+    const picSize = `${fetchPicSize(e)}`;
+    setModalFileSize(picSize);
+    handleModal();
   };
 
-  const handleImgClick = (event) => {
-    handleModal();
-    // handleSrc(event);
-  };
   return (
     <div className="photoGallery">
-      <Modal show={show}>
-        <Modal.Header>Photo name</Modal.Header>
-        <Modal.Body>
-          <Card>
-            <Card.Img src={`${modalSrc}`} />
-            Photo size
-          </Card>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button onClick={() => handleModal()}>Close Modal</Button>
-        </Modal.Footer>
-      </Modal>
       {fectchStatusError && <p>{fectchStatusError}</p>}
       {uploadStatus && <p>{uploadStatus}</p>}
       <form onSubmit={submitForm}>
@@ -83,12 +73,26 @@ export const Photos = () => {
         <Button type="submit">Upload</Button>
       </form>
       {photos.map((pic) => (
-        <Button onClick={() => handleImgClick()}>
-          <Card>
-            <Card.Img src={`${API_BASE_URL}${pic}`} />
-            {/* <img key={pic} src={`${API_BASE_URL}${pic}`} alt={pic} width={"150px"} height={"150px"} /> */}
-          </Card>
-        </Button>
+        <Modal show={show}>
+          <Modal.Header>{modalName}</Modal.Header>
+          <Modal.Body>
+            <Card>
+              <Card.Img src={modalSrc} />
+            </Card>
+          </Modal.Body>
+          <Modal.Footer>
+            <p>{modalFileSize}</p>
+            <Button onClick={() => handleModal()}>Close Modal</Button>
+          </Modal.Footer>
+        </Modal>
+      ))}
+      {photos.map((pic) => (
+        // <Button onClick={() => handleImgClick()} >
+        <Card src={`${API_BASE_URL}${pic}`}>
+          <Card.Img src={`${API_BASE_URL}${pic}`} name={pic} onClick={(e) => handleImgClick(e)} />
+          {/* <img key={pic} src={`${API_BASE_URL}${pic}`} alt={pic} width={"150px"} height={"150px"} /> */}
+        </Card>
+        // </Button>
       ))}
     </div>
   );
