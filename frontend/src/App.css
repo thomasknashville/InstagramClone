@@ -41,3 +41,7 @@
   width: 200px;
   height: 320px;
 }
+
+#nav-items {
+  border: 2px solid red;
+}

@@ -5,9 +5,9 @@ import Photos from "./components/photos/Photos";
 
 function App() {
   return (
-    <header>
+    <div>
       <Navigation />
-    </header>
+    </div>
   );
 }
 

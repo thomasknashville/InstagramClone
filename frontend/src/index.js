@@ -9,7 +9,7 @@ import Navigation from "./components/navigation/Naviagtion";
 ReactDOM.render(
   <React.StrictMode>
     <BrowserRouter>
-      <Navigation />
+      <App />
     </BrowserRouter>
   </React.StrictMode>,
   document.getElementById("root"),

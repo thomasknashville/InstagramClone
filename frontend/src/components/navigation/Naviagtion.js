@@ -5,26 +5,26 @@ import Photos from "../photos/Photos";
 const Navigation = () => {
   return (
     <div id="nav-links">
-      <ul id="nav-items">
-        <Switch>
-          <Route exact path="/">
-            <Home />
-          </Route>
-          <Route exact path="/photos">
-            <Photos />
-          </Route>
-        </Switch>
-        <li>
+      <div id="nav-items">
+        <div>
           <NavLink to="/" activeClassName="selected" exact={true}>
             Home
           </NavLink>
-        </li>
-        <li>
+        </div>
+        <div>
           <NavLink to="/photos" activeClassName="selected">
             Photos
           </NavLink>
-        </li>
-      </ul>
+        </div>
+      </div>
+      <Switch>
+        <Route exact path="/">
+          <Home />
+        </Route>
+        <Route exact path="/photos">
+          <Photos />
+        </Route>
+      </Switch>
     </div>
   );
 };
