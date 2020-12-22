@@ -3,7 +3,9 @@ import { fetchPics, API_BASE_URL, uploadPic } from "../../api";
 import Button from "react-bootstrap/Button";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Card, Modal } from "react-bootstrap";
-import Navigation from "../navigation/Naviagtion";
+import  Container from 'react-bootstrap/Container';
+//import Navigation from "../navigation/Naviagtion";
+
 
 export const Photos = () => {
   const [photos, setPhotos] = useState([]);
@@ -63,7 +65,7 @@ export const Photos = () => {
     // handleSrc(event);
   };
   return (
-    <div className="photoGallery">
+    <Container className="photoGallery fx-margin">
       <Modal show={show}>
         <Modal.Header>Photo name</Modal.Header>
         <Modal.Body>
@@ -90,7 +92,7 @@ export const Photos = () => {
           </Card>
         </Button>
       ))}
-    </div>
+    </Container>
   );
 };
 
