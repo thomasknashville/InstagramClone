@@ -87,7 +87,7 @@ app.get("/pics/:filename", async (req, res) => {
 });
 
 // post/create file
-app.post("/photos", uploader.single("photo"), (req, res) => {
+app.post("/pics", uploader.single("photo"), (req, res) => {
   console.log({ req });
   res.json({
     photo: req.file.path,
