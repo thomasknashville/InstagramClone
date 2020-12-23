@@ -1,6 +1,6 @@
 import axios from "axios";
 
-export const API_BASE_URL = "http://localhost:4000";
+export const API_BASE_URL = "http://localhost:5000";
 
 const axiosInstance = axios.create({
   baseURL: API_BASE_URL,
@@ -27,25 +27,9 @@ export const fetchPicSize = async (e) => {
   return fileBytes;
 };
 
-// fetch pics hard mode
-// export const fetchPics = async () => {
-//   const { data } = await axiosInstance.get("/pics-hard-mode", {
-//     params: {
-//       size: 200000,
-//     },
-//   });
-//   return data;
-// };
-
 // upload pic
 export const uploadPic = async (data) => {
   const formData = new FormData();
   formData.append("photo", data);
   await axiosInstance.post("/pics", formData);
 };
-
-// export const fetchSize = async () => {
-//   const { data } = await axiosInstance.get(`/pics/${}`);
-//   console.log(data);
-//   return data;
-// };

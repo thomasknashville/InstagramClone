@@ -31,14 +31,21 @@ export const Photos = () => {
     }
   };
 
+  const resetForm = () => {
+    const form = document.querySelector(".form");
+    form.value = "";
+  };
+
   const submitForm = async (event) => {
     try {
       event.preventDefault();
       await uploadPic(selectedFile);
       await reFecthPhotos();
       setUploadStatus("Success!");
+      resetForm();
     } catch {
       setUploadStatus("Unable to upload photo");
+      resetForm();
     } finally {
       setTimeout(() => {
         setUploadStatus(null);
@@ -67,19 +74,19 @@ export const Photos = () => {
       {fectchStatusError && <p>{fectchStatusError}</p>}
       {uploadStatus && <p>{uploadStatus}</p>}
       <form onSubmit={submitForm}>
-        <input type="file" name="photo" onChange={onSelectFile} />
+        <input className="form" type="file" name="photo" onChange={onSelectFile} />
         <Button type="submit">Upload</Button>
       </form>
       <div className="gallery">
         {photos.map((pic) => (
           <Modal show={show}>
-            <Modal.Header>{modalName}</Modal.Header>
+            <Modal.Header className='modalText'>{modalName}</Modal.Header>
             <Modal.Body>
-              <Card>
+              <Card className='modalImageHolder'>
                 <Card.Img src={modalSrc} />
               </Card>
             </Modal.Body>
-            <Modal.Footer>
+            <Modal.Footer className='modalText'>
               <p>{modalFileSize}</p>
               <Button onClick={() => handleModal()}>Close</Button>
             </Modal.Footer>

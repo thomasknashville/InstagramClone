@@ -1,9 +1,9 @@
 import express from "express";
 import { uploader, UPLOAD_DIRECTORY, getUploadedFiles, findUploadedFile } from "./utils";
 import path from "path";
-
-// install/use cors module to comply with CORS policy "its ok for different services/browsers to make requests to this address"
 import cors from "cors";
+// install/use cors module to comply with CORS policy "its ok for different services/browsers to make requests to this address"
+
 
 const app = express();
 app.use(cors());
@@ -39,6 +39,6 @@ app.post("/pics", uploader.single("photo"), (req, res) => {
   });
 });
 
-app.listen(4000, () => {
-  console.log("Express server is now running on port 4000");
+app.listen(5000, () => {
+  console.log("Express server is now running on port 5000");
 });

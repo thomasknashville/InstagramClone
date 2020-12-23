@@ -1,20 +1,14 @@
 import React from "react";
 import Container from "react-bootstrap/Container";
 import Button from "react-bootstrap/Button";
-import submitForm from "../photos/Photos";
-import onSelectFile from "../photos/Photos";
 import { useState } from "react";
-import { fetchPics, API_BASE_URL, uploadPic, fetchPicSize } from "../../api";
+import { fetchPics, uploadPic } from "../../api";
 
 const Home = () => {
   const [photos, setPhotos] = useState([]);
   const [selectedFile, setSelectedFile] = useState(null);
   const [uploadStatus, setUploadStatus] = useState(null);
   const [fectchStatusError, setFetchStatusError] = useState(null);
-  const [show, setShow] = useState(false);
-  const [modalSrc, setModalSrc] = useState("no path!");
-  const [modalName, setModalName] = useState("");
-  const [modalFileSize, setModalFileSize] = useState("0");
 
   const reFecthPhotos = async () => {
     try {
