@@ -32,11 +32,13 @@ const Home = () => {
         setUploadStatus(null);
       }, 3000);
     }
+    setPhotos("");
+    setSelectedFile("");
   };
 
-  const onSelectFile = (event) => {
+  function onSelectFile(event) {
     setSelectedFile(event.target.files[0]);
-  };
+  }
 
   return (
     <Container className="fx-margin">

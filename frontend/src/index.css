@@ -10,8 +10,7 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
-.gallery {
-  display: flex;
-  flex-wrap: wrap;
-  width: 900px;
+.card {
+  width: 300px;
+  height: 320px;
 }
