@@ -4,7 +4,7 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
-import Navigation from "./components/navigation/Naviagtion";
+// import Navigation from "./components/navigation/Naviagtion";
 
 ReactDOM.render(
   <React.StrictMode>
